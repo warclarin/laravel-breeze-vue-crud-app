@@ -52,7 +52,7 @@ class PostController extends Controller
     public function show(Post $post)
     {
         $post->body = nl2br($post->body);
-        
+
         return Inertia::render('Post/Read', [
             'post' => $post
         ]);
@@ -63,7 +63,9 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        //
+        return Inertia::render('Post/Update', [
+            'post' => $post
+        ]);
     }
 
     /**
@@ -71,7 +73,11 @@ class PostController extends Controller
      */
     public function update(UpdatePostRequest $request, Post $post)
     {
-        //
+        $post->title = $request->title;
+        $post->body = $request->body;
+        $post->save();
+
+        return to_route('posts.index');
     }
 
     /**
