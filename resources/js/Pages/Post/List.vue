@@ -51,7 +51,9 @@ defineProps({ posts: Object })
                                 <td class="px-6 py-4">{{ moment(post.updated_at).format('MMM D, Y HH:mm:ss') }}
                                 </td>
                                 <td class="px-6 py-4">
-                                    <Link :href="`/posts/${post.id}/edit`"><i class="fas fa-edit text-blue-500 mr-2"></i>
+                                    <Link :href="`/posts/${post.id}`"><i class="fas fa-eye text-blue-500 mr-2"></i>
+                                    </Link>
+                                    <Link :href="`/posts/${post.id}/edit`"><i class="fas fa-edit text-green-500 mr-2"></i>
                                     </Link>
                                     <Link href=""><i class="fas fa-trash text-red-500"></i></Link>
                                 </td>

@@ -51,7 +51,11 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        //
+        $post->body = nl2br($post->body);
+        
+        return Inertia::render('Post/Read', [
+            'post' => $post
+        ]);
     }
 
     /**
