@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StorePostRequest;
 use App\Http\Requests\UpdatePostRequest;
+use Illuminate\Support\Str;
 use App\Models\Post;
 use Inertia\Inertia;
 
@@ -34,7 +35,15 @@ class PostController extends Controller
      */
     public function store(StorePostRequest $request)
     {
-        //
+        Post::create([
+            'title' => $request->title,
+            'body' => $request->body,
+            'slug' => Str::slug($request->title),
+            'author_id' => auth()->id(),
+            'is_published' => true
+        ]);
+
+        return to_route('posts.index');
     }
 
     /**
