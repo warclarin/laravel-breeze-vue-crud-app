@@ -2,15 +2,31 @@
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import InputError from '@/Components/InputError.vue';
 import InputLabel from '@/Components/InputLabel.vue';
+import DangerButton from '@/Components/DangerButton.vue';
+import Modal from '@/Components/Modal.vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
+import SecondaryButton from '@/Components/SecondaryButton.vue';
 import TextInput from '@/Components/TextInput.vue';
 import Textarea from '@/Components/Textarea.vue';
 import { Head, useForm } from '@inertiajs/vue3';
+import { ref } from 'vue';
 
 const props = defineProps({
     post: Object
 })
 
+// delete post
+const deleteForm = useForm({});
+const confirmingDeletion = ref(false)
+const confirmDeletion = () => confirmingDeletion.value = true
+const deletePost = () => {
+    deleteForm.delete(route('posts.destroy', { post: props.post.id }), {
+        onSuccess: () => closeModal()
+    })
+}
+const closeModal = () => confirmingDeletion.value = false
+
+// edit post
 const form = useForm({
     title: props.post.title,
     body: props.post.body
@@ -55,10 +71,30 @@ const updatePost = () => {
                                 :disabled="form.processing">
                                 Update
                             </PrimaryButton>
+                            <DangerButton class="ml-4" type="button" @click="confirmDeletion">
+                                Delete
+                            </DangerButton>
                         </div>
                     </form>
                 </div>
             </div>
+            
+            <Modal :show="confirmingDeletion">
+                <div class="p-6">
+                    <h2 class="text-lg font-medium text-gray-900 dark:text-gray-100">
+                        Are you sure you want to delete this post?
+                    </h2>
+
+                    <div class="mt-6 flex justify-end">
+                        <SecondaryButton @click="closeModal"> Cancel </SecondaryButton>
+
+                        <DangerButton class="ml-3" @click="deletePost">
+                            Delete
+                        </DangerButton>
+                    </div>
+                </div>
+            </Modal>
+
         </div>
     </AuthenticatedLayout>
 </template>

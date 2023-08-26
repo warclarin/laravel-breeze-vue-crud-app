@@ -55,7 +55,6 @@ defineProps({ posts: Object })
                                     </Link>
                                     <Link :href="`/posts/${post.id}/edit`"><i class="fas fa-edit text-green-500 mr-2"></i>
                                     </Link>
-                                    <Link href=""><i class="fas fa-trash text-red-500"></i></Link>
                                 </td>
                             </tr>
                         </tbody>
