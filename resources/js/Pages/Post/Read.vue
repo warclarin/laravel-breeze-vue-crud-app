@@ -1,6 +1,7 @@
 <script setup>
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import { Head } from '@inertiajs/vue3';
+import moment from 'moment'
 
 defineProps({ post: Object })
 </script>
@@ -10,7 +11,9 @@ defineProps({ post: Object })
 
     <AuthenticatedLayout>
         <template #header>
-            <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">{{ post.title }}</h2>
+            <h2 class="font-semibold text-5xl text-gray-800 dark:text-gray-200 leading-tight">{{ post.title }}</h2>
+            <div class="text-gray-500 font-semibold">{{ moment(post.created_at).format('MMM D, Y h:mm A') }}</div>
+            <div class="font-bold">{{ post.author.name }}</div>
         </template>
 
         <div class="py-12">
