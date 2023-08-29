@@ -60,6 +60,22 @@ class PostController extends Controller
     }
 
     /**
+     * Display post in public
+     */
+    public function readSlug($slug)
+    {
+        $post = Post::where('slug', $slug)->first();
+        abort_if(!$post, 404);
+
+        $post->load('author');
+        $post->body = nl2br($post->body);
+
+        return Inertia::render('Post/ReadSlug', [
+            'post' => $post
+        ]);
+    }
+
+    /**
      * Show the form for editing the specified resource.
      */
     public function edit(Post $post)
