@@ -1,6 +1,6 @@
 <script setup>
 import CommentSection from '@/Components/CommentSection.vue'
-import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
+import DefaultLayout from '@/Layouts/DefaultLayout.vue';
 import { Head } from '@inertiajs/vue3';
 import moment from 'moment'
 
@@ -10,7 +10,7 @@ defineProps({ post: Object })
 <template>
     <Head :title="post.title"></Head>
 
-    <AuthenticatedLayout>
+    <DefaultLayout>
         <template #header>
             <h2 class="font-semibold text-5xl text-gray-800 dark:text-gray-200 leading-tight">{{ post.title }}</h2>
             <div class="text-gray-500 font-semibold">{{ moment(post.created_at).format('MMM D, Y h:mm A') }}</div>
@@ -26,5 +26,5 @@ defineProps({ post: Object })
 
             <CommentSection :post="post"/>
         </div>
-    </AuthenticatedLayout>
+    </DefaultLayout>
 </template>

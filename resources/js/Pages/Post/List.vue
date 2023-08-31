@@ -1,7 +1,7 @@
 <script setup>
 import Pagination from '@/Components/Pagination.vue'
 import PrimaryButton from '@/Components/PrimaryButton.vue'
-import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
+import DefaultLayout from '@/Layouts/DefaultLayout.vue';
 import { Head, Link } from '@inertiajs/vue3'
 import moment from 'moment'
 
@@ -11,7 +11,7 @@ defineProps({ posts: Object })
 <template>
     <Head title="Posts"></Head>
 
-    <AuthenticatedLayout>
+    <DefaultLayout>
         <template #header>
             <div class="flex justify-end">
                 <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">Posts</h2>
@@ -64,5 +64,5 @@ defineProps({ posts: Object })
                 </div>
             </div>
         </div>
-    </AuthenticatedLayout>
+    </DefaultLayout>
 </template>

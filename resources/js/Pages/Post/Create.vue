@@ -1,5 +1,5 @@
 <script setup>
-import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
+import DefaultLayout from '@/Layouts/DefaultLayout.vue';
 import InputError from '@/Components/InputError.vue';
 import InputLabel from '@/Components/InputLabel.vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
@@ -23,7 +23,7 @@ const createPost = () => {
 <template>
     <Head title="Create Post"></Head>
 
-    <AuthenticatedLayout>
+    <DefaultLayout>
         <template #header>
             <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">Create Post</h2>
         </template>
@@ -58,5 +58,5 @@ const createPost = () => {
                 </div>
             </div>
         </div>
-    </AuthenticatedLayout>
+    </DefaultLayout>
 </template>

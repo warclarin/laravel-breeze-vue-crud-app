@@ -30,6 +30,14 @@ const showingNavigationDropdown = ref(false);
                                 <NavLink :href="route('home')" :active="route().current('home')">
                                     Home
                                 </NavLink>
+                                <NavLink v-if="$page.props.auth.user" :href="route('dashboard')"
+                                    :active="route().current('dashboard')">
+                                    Dashboard
+                                </NavLink>
+                                <NavLink v-if="$page.props.auth.user" :href="route('posts.index')"
+                                    :active="route().current('posts.index')">
+                                    Posts
+                                </NavLink>
                             </div>
                         </div>
 
@@ -98,6 +106,14 @@ const showingNavigationDropdown = ref(false);
                     <div class="pt-2 pb-3 space-y-1">
                         <ResponsiveNavLink :href="route('home')" :active="route().current('home')">
                             Home
+                        </ResponsiveNavLink>
+                        <ResponsiveNavLink v-if="$page.props.auth.user" :href="route('dashboard')"
+                            :active="route().current('dashboard')">
+                            Dashboard
+                        </ResponsiveNavLink>
+                        <ResponsiveNavLink v-if="$page.props.auth.user" :href="route('posts.index')"
+                            :active="route().current('posts.index')">
+                            Posts
                         </ResponsiveNavLink>
                     </div>
 

@@ -1,5 +1,5 @@
 <script setup>
-import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
+import DefaultLayout from '@/Layouts/DefaultLayout.vue';
 import InputError from '@/Components/InputError.vue';
 import InputLabel from '@/Components/InputLabel.vue';
 import DangerButton from '@/Components/DangerButton.vue';
@@ -40,7 +40,7 @@ const updatePost = () => {
 <template>
     <Head title="Update Post"></Head>
 
-    <AuthenticatedLayout>
+    <DefaultLayout>
         <template #header>
             <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">Create Post</h2>
         </template>
@@ -95,5 +95,5 @@ const updatePost = () => {
             </Modal>
 
         </div>
-    </AuthenticatedLayout>
+    </DefaultLayout>
 </template>
