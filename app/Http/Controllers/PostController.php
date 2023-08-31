@@ -52,7 +52,7 @@ class PostController extends Controller
     public function show(Post $post)
     {
         $post->body = nl2br($post->body);
-        $post->load('author');
+        $post->load(['author', 'comments.user']);
 
         return Inertia::render('Post/Read', [
             'post' => $post
@@ -67,7 +67,7 @@ class PostController extends Controller
         $post = Post::where('slug', $slug)->first();
         abort_if(!$post, 404);
 
-        $post->load('author');
+        $post->load(['author', 'comments.user']);
         $post->body = nl2br($post->body);
 
         return Inertia::render('Post/ReadSlug', [

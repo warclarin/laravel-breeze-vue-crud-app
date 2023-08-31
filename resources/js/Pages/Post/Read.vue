@@ -1,4 +1,5 @@
 <script setup>
+import CommentSection from '@/Components/CommentSection.vue'
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import { Head } from '@inertiajs/vue3';
 import moment from 'moment'
@@ -22,6 +23,8 @@ defineProps({ post: Object })
                     <p v-html="post.body"></p>
                 </div>
             </div>
+
+            <CommentSection :post="post"/>
         </div>
     </AuthenticatedLayout>
 </template>

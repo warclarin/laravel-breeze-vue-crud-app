@@ -1,9 +1,10 @@
 <script setup>
+import CommentSection from '@/Components/CommentSection.vue'
 import DefaultLayout from '@/Layouts/DefaultLayout.vue';
 import { Head } from '@inertiajs/vue3';
 import moment from 'moment'
 
-defineProps({ post: Object })
+const props = defineProps({ post: Object })
 
 </script>
 
@@ -23,6 +24,8 @@ defineProps({ post: Object })
                     <p v-html="post.body"></p>
                 </div>
             </div>
+
+            <CommentSection :post="post"/>
         </div>
     </DefaultLayout>
 </template>

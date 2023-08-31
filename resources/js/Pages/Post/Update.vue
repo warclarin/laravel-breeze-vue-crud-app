@@ -8,7 +8,7 @@ import PrimaryButton from '@/Components/PrimaryButton.vue';
 import SecondaryButton from '@/Components/SecondaryButton.vue';
 import TextInput from '@/Components/TextInput.vue';
 import Textarea from '@/Components/Textarea.vue';
-import { Head, useForm } from '@inertiajs/vue3';
+import { Head, useForm, router } from '@inertiajs/vue3';
 import { ref } from 'vue';
 
 const props = defineProps({
@@ -16,11 +16,10 @@ const props = defineProps({
 })
 
 // delete post
-const deleteForm = useForm({});
 const confirmingDeletion = ref(false)
 const confirmDeletion = () => confirmingDeletion.value = true
 const deletePost = () => {
-    deleteForm.delete(route('posts.destroy', { post: props.post.id }), {
+    router.delete(route('posts.destroy', { post: props.post.id }), {
         onSuccess: () => closeModal()
     })
 }
