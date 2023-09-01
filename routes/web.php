@@ -1,13 +1,12 @@
 <?php
 
+use App\Http\Controllers\Auth\SocialiteController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfileController;
-use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
-use Inertia\Inertia;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,3 +35,7 @@ Route::middleware('auth')->group(function () {
 require __DIR__ . '/auth.php';
 
 Route::get('/{slug}', [PostController::class, 'readSlug']);
+
+// Sign in with Google
+Route::get('/auth/redirect', [SocialiteController::class, 'redirect'])->name('google.login');
+Route::get('/auth/callback', [SocialiteController::class, 'callback'])->name('google.callback');
